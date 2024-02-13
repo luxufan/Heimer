@@ -5,6 +5,8 @@ add_subdirectory(contrib/Argengine EXCLUDE_FROM_ALL)
 include_directories(contrib/Argengine/src)
 
 # Translation files in src/translations (without .ts)
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/Heimer")
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/Heimer")
 set(TS heimer_de heimer_en heimer_es heimer_fi heimer_fr heimer_it heimer_nl heimer_zh)
 set(TS_FILES)
 set(QM_FILES)
@@ -225,8 +227,9 @@ add_library(${HEIMER_LIB_NAME} STATIC ${HEIMER_LIB_HDR} ${HEIMER_LIB_SRC} ${MOC_
 target_link_libraries(${HEIMER_LIB_NAME} Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::Xml SimpleLogger_static Argengine_static)
 
 # Add the executable
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-add_executable(${BINARY_NAME} WIN32 ${APP_SRC} ${MOC_SRC} ${RC_SRC} ${UI_HDRS} ${QM})
+list(APPEND TEST_TARGETS ${BINARY_NAME})
+
+llvm_multisource(${BINARY_NAME} WIN32 ${APP_SRC} ${MOC_SRC} ${RC_SRC} ${UI_HDRS} ${QM})
 target_link_libraries(${BINARY_NAME} ${HEIMER_LIB_NAME})
 
 # Add target for running clang-format

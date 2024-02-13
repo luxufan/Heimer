@@ -44,6 +44,8 @@ set(CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH})
 set(CPACK_PACKAGE_NAME heimer)
 set(CPACK_PACKAGE_VENDOR Juzzlin)
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Heimer is a simple cross-platform mind map tool written in Qt.")
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/Heimer")
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/Heimer")
 set(CPACK_PACKAGE_ICON ${CMAKE_SOURCE_DIR}/data/images/about.png)
 
 set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/COPYING)
@@ -92,6 +94,7 @@ elseif(MSVC)
 endif()
 
 string(TOLOWER ${CMAKE_PROJECT_NAME} BINARY_NAME)
+set(BINARY_NAME "heimer")
 set(HEIMER_LIB_NAME ${CMAKE_PROJECT_NAME})
 
 add_definitions(-DVERSION="${VERSION}")
