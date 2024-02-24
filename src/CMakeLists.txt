@@ -229,6 +229,7 @@ target_link_libraries(${HEIMER_LIB_NAME} Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_V
 # Add the executable
 list(APPEND TEST_TARGETS ${BINARY_NAME})
 
+list(APPEND TEST_TARGETS ${BINARY_NAME})
 llvm_multisource(${BINARY_NAME} WIN32 ${APP_SRC} ${MOC_SRC} ${RC_SRC} ${UI_HDRS} ${QM})
 target_link_libraries(${BINARY_NAME} ${HEIMER_LIB_NAME})
 
